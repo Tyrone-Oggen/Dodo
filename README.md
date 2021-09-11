@@ -1,4 +1,4 @@
-#Dodo
+# Dodo
 ###### A small Todo list for Dodo brains like me
 
 This app will focus on building a todo list app and have a main focus around learning Local Data Persistance
