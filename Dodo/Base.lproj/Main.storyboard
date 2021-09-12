@@ -30,7 +30,14 @@
                             <outlet property="delegate" destination="erI-hb-cZl" id="enO-1H-gco"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dodo" id="QMF-W5-m4Y"/>
+                    <navigationItem key="navigationItem" title="Dodo" id="QMF-W5-m4Y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7JP-HN-6iB">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addTodoListItemButtonPressed:" destination="erI-hb-cZl" id="9O5-Wa-7dS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVC-qM-5od" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
