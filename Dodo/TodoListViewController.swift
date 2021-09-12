@@ -51,7 +51,7 @@ class TodoListViewController: UITableViewController {
         }
         
         alert.addAction(alertAction)
-        present(alert, animated: true, completion: nilg)
+        present(alert, animated: true, completion: nil)
     }
     
 }
