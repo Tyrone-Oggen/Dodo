@@ -9,7 +9,7 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-    let itemArray = ["Have coffee", "Have cereal", "Watch Udemy Course"]
+    var itemArray = ["Have coffee", "Have cereal", "Watch Udemy Course"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +44,24 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - Add new items
     @IBAction func addTodoListItemButtonPressed(_ sender: Any) {
+        //Created to allow the alertAction to access the value at .addTextField after the action is executed
+        var textField = UITextField()
+        
         //Alert configuration
         let alert = UIAlertController(title: "Add new Dodo item", message: "", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            print("success")
+            if let newItem = textField.text {
+                self.itemArray.append(newItem)
+                self.tableView.reloadData()
+            }
         }
         
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new item"
+            textField = alertTextField
+        }
         alert.addAction(alertAction)
+        
         present(alert, animated: true, completion: nil)
     }
     
