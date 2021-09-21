@@ -57,7 +57,7 @@ class TodoListViewController: UITableViewController {
         
         item.done.toggle()
         
-        tableView.reloadData()
+        self.saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -76,16 +76,7 @@ class TodoListViewController: UITableViewController {
             
             self.itemArray.append(newItem)
             
-            let encoder = PropertyListEncoder()
-            
-            do {
-                let data = try encoder.encode(self.itemArray)
-                try data.write(to: self.dataFilePath!)
-            } catch {
-                print(error)
-            }
-            
-            self.tableView.reloadData()
+            self.saveItems()
         }
         
         alert.addTextField { (alertTextField) in
@@ -95,6 +86,20 @@ class TodoListViewController: UITableViewController {
         alert.addAction(alertAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Model Manipulation Methods
+    func saveItems() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(self.itemArray)
+            try data.write(to: self.dataFilePath!)
+        } catch {
+            print("Error printing item array: \(error)")
+        }
+        
+        self.tableView.reloadData()
     }
     
 }
