@@ -26,9 +26,7 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        let category = categoryArray[indexPath.row]
-        
-        cell.textLabel?.text = category.name
+        cell.textLabel?.text = categoryArray[indexPath.row].name
         
         return cell
     }
@@ -76,7 +74,7 @@ class CategoryTableViewController: UITableViewController {
         do {
             categoryArray = try context.fetch(request)
         } catch {
-            print("Error data data to from: \(error)")
+            print("Error loading data to from context: \(error)")
         }
         
         tableView.reloadData()

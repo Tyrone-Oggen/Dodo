@@ -92,7 +92,7 @@ class TodoListTableViewController: UITableViewController {
         do {
             itemArray = try context.fetch(request)
         } catch {
-            print("Error data data to from: \(error)")
+            print("Error loading data to from context: \(error)")
         }
         
         tableView.reloadData()
