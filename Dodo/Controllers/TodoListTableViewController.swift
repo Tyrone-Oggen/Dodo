@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class TodoListViewController: UITableViewController {
+class TodoListTableViewController: UITableViewController {
     
     var itemArray = [Item]()
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
@@ -29,8 +29,8 @@ class TodoListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
         let item = itemArray[indexPath.row]
-        cell.textLabel?.text = item.title
         
+        cell.textLabel?.text = item.title
         cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
@@ -100,7 +100,8 @@ class TodoListViewController: UITableViewController {
     
 }
 
-extension TodoListViewController: UISearchBarDelegate {
+//MARK: - Searchbar delegate methods
+extension TodoListTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         
