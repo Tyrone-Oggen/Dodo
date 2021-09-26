@@ -14,18 +14,6 @@ class CategoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let categoryItem0 = Category(context: context)
-        categoryItem0.name = "Food"
-        
-        let categoryItem1 = Category(context: context)
-        categoryItem1.name = "Clothing"
-        
-        let categoryItem2 = Category(context: context)
-        categoryItem2.name = "Gaming"
-        
-        categoryArray = [categoryItem0, categoryItem1, categoryItem2]
-        
     }
     
     //MARK: - TableView Datasource methods
@@ -46,6 +34,27 @@ class CategoryTableViewController: UITableViewController {
     //MARK: - Tableview Delegate methods
     
     //MARK: - Data manipulation methods
+    func saveItems() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving data to context: \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+    
+    //default value provided for load() method if no parameter is desired to be passed
+    func loadItems(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
+        
+        do {
+            categoryArray = try context.fetch(request)
+        } catch {
+            print("Error data data to from: \(error)")
+        }
+        
+        tableView.reloadData()
+    }
 
     @IBAction func addButtonPressed(_ sender: UIButton) {
     }
