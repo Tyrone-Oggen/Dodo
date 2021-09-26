@@ -16,9 +16,7 @@ class TodoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(dataFilePath!)
-        
+                
         loadItems()
     }
     
@@ -85,7 +83,7 @@ class TodoListViewController: UITableViewController {
             print("Error saving data to context: \(error)")
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     //default value provided for load() method if no parameter is desired to be passed
@@ -96,7 +94,8 @@ class TodoListViewController: UITableViewController {
         } catch {
             print("Error data data to from: \(error)")
         }
-
+        
+        tableView.reloadData()
     }
     
 }
@@ -110,5 +109,14 @@ extension TodoListViewController: UISearchBarDelegate {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
         loadItems(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }
