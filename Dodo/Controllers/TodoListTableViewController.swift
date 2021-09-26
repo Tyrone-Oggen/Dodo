@@ -11,13 +11,18 @@ import CoreData
 class TodoListTableViewController: UITableViewController {
     
     var itemArray = [Item]()
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
+    //Set to an optional Category because it will be nil when the class is loaded
+    var selectedCategory : Category? {
+        //Everything bewtween the follwing curly braces will be run, only when selectedCategory has a value which is why we run loadItems because it is dependant on the selectedCategory property
+        didSet {
+            loadItems()
+        }
+    }
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        loadItems()
     }
     
     //MARK: - TableView Datasource methods
@@ -60,6 +65,8 @@ class TodoListTableViewController: UITableViewController {
             
             newItem.title = textField.text!
             newItem.done = false
+            //We set the relationShip category we created inside the DataModel so that it will get all relevant data accordingly
+            newItem.parentCategory = self.selectedCategory
             
             self.itemArray.append(newItem)
             
@@ -86,9 +93,22 @@ class TodoListTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    //default value provided for load() method if no parameter is desired to be passed
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+    /*
+        default value provided for load() method if no parameter is desired to be passed
+        predicate added to cater for need for compound predicate in order to only get the selectedCategory, as well as any further predicates passed through as an argument (for example) the search bar
+        predicate argument set to nil so that the loadItems() that don't need one and just want to load all the values can run without needing to pass the value
+     */
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
         
+        //To cater for if there isn't a predicate passed through the argument
+        if let predicatePassedThroughArgument = predicate {
+            //This allows us to create a predicate for the request that will ensure that both the category selected and any further predicates that are passed through the arguments using Subpredicates
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, predicatePassedThroughArgument])
+        } else {
+            request.predicate = categoryPredicate
+        }
+
         do {
             itemArray = try context.fetch(request)
         } catch {
@@ -105,11 +125,11 @@ extension TodoListTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
 
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
-        loadItems(with: request)
+        loadItems(with: request, predicate: predicate)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

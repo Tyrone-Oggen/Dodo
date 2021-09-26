@@ -32,6 +32,23 @@ class CategoryTableViewController: UITableViewController {
     }
         
     //MARK: - Tableview Delegate methods
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToItems", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Downcasted since we know where the segue is navigating to
+        let destinationVC = segue.destination as! TodoListTableViewController
+        
+        /*
+            This returns an optional indexPath so we wrap it in an if let, even though it's going to be triggered once a row is actually selected
+            Swift will know the indexPath because this method is called inside the didSelectRowAt metho which will have access to this method
+         */
+        if let indexPath = tableView.indexPathForSelectedRow {
+            //We set the property selectedCategory on the destinationVC (which is the TodoListVC) as the Category object row that gets selected
+            destinationVC.selectedCategory = categoryArray[indexPath.row]
+        }
+    }
     
     //MARK: - Add Categories method
     @IBAction func addButtonPressed(_ sender: UIButton) {
