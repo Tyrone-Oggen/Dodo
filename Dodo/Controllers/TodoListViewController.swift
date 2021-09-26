@@ -88,8 +88,8 @@ class TodoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadItems() {
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
+    //default value provided for load() method if no parameter is desired to be passed
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
         
         do {
             itemArray = try context.fetch(request)
@@ -101,3 +101,14 @@ class TodoListViewController: UITableViewController {
     
 }
 
+extension TodoListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(with: request)
+    }
+}
