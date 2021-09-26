@@ -33,8 +33,32 @@ class CategoryTableViewController: UITableViewController {
         
     //MARK: - Tableview Delegate methods
     
+    //MARK: - Add Categories method
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        var textfield = UITextField()
+        
+        let alert = UIAlertController(title: "Add new todo list Categoey", message: "", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Add Category", style: .default) { (action) in
+            let newCategory = Category(context: self.context)
+            
+            newCategory.name = textfield.text!
+            
+            self.categoryArray.append(newCategory)
+            
+            self.saveCategories()
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new category"
+            textfield = alertTextField
+        }
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     //MARK: - Data manipulation methods
-    func saveItems() {
+    func saveCategories() {
         do {
             try context.save()
         } catch {
@@ -45,7 +69,7 @@ class CategoryTableViewController: UITableViewController {
     }
     
     //default value provided for load() method if no parameter is desired to be passed
-    func loadItems(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
+    func loadCategoeies(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
         
         do {
             categoryArray = try context.fetch(request)
@@ -54,8 +78,5 @@ class CategoryTableViewController: UITableViewController {
         }
         
         tableView.reloadData()
-    }
-
-    @IBAction func addButtonPressed(_ sender: UIButton) {
     }
 }
