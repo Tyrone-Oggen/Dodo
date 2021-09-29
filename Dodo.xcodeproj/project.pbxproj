@@ -3,23 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8A33BB34270077EC00F3150A /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A33BB33270077EC00F3150A /* CategoryTableViewController.swift */; };
-		8ABBD91626F9F693008881FB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD91426F9F693008881FB /* DataModel.xcdatamodeld */; };
+		8AA1AB0027011F9500DA9137 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1AAFF27011F9500DA9137 /* Category.swift */; };
+		8AA1AB0227011FA500DA9137 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1AB0127011FA500DA9137 /* Item.swift */; };
 		8AEB649026ED59C5005C03DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB648F26ED59C5005C03DF /* AppDelegate.swift */; };
 		8AEB649226ED59C5005C03DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB649126ED59C5005C03DF /* SceneDelegate.swift */; };
 		8AEB649426ED59C5005C03DF /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB649326ED59C5005C03DF /* TodoListTableViewController.swift */; };
 		8AEB649726ED59C5005C03DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEB649526ED59C5005C03DF /* Main.storyboard */; };
 		8AEB649926ED59C7005C03DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AEB649826ED59C7005C03DF /* Assets.xcassets */; };
 		8AEB649C26ED59C7005C03DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEB649A26ED59C7005C03DF /* LaunchScreen.storyboard */; };
+		9C16933C50262EED29E87796 /* Pods_Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77052463DBB9933F4AA49118 /* Pods_Dodo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C5DF3F48C987A752497FAE5 /* Pods-Dodo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dodo.release.xcconfig"; path = "Target Support Files/Pods-Dodo/Pods-Dodo.release.xcconfig"; sourceTree = "<group>"; };
+		77052463DBB9933F4AA49118 /* Pods_Dodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A33BB33270077EC00F3150A /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		8ABBD91526F9F693008881FB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		8AA1AAFF27011F9500DA9137 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8AA1AB0127011FA500DA9137 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8AEB648C26ED59C5005C03DF /* Dodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEB648F26ED59C5005C03DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AEB649126ED59C5005C03DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,7 @@
 		8AEB649826ED59C7005C03DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AEB649B26ED59C7005C03DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AEB649D26ED59C7005C03DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7804CBBBEF7D52CB3A73489 /* Pods-Dodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dodo.debug.xcconfig"; path = "Target Support Files/Pods-Dodo/Pods-Dodo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C16933C50262EED29E87796 /* Pods_Dodo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +51,8 @@
 		8ABBD90F26F8D4D1008881FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8ABBD91426F9F693008881FB /* DataModel.xcdatamodeld */,
+				8AA1AAFF27011F9500DA9137 /* Category.swift */,
+				8AA1AB0127011FA500DA9137 /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -71,6 +79,8 @@
 			children = (
 				8AEB648E26ED59C5005C03DF /* Dodo */,
 				8AEB648D26ED59C5005C03DF /* Products */,
+				9D1911DC1D8589CB69C88388 /* Pods */,
+				9128D8A4E778DBDE65E1FB93 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +107,23 @@
 			path = Dodo;
 			sourceTree = "<group>";
 		};
+		9128D8A4E778DBDE65E1FB93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77052463DBB9933F4AA49118 /* Pods_Dodo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D1911DC1D8589CB69C88388 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7804CBBBEF7D52CB3A73489 /* Pods-Dodo.debug.xcconfig */,
+				2C5DF3F48C987A752497FAE5 /* Pods-Dodo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AEB64A026ED59C7005C03DF /* Build configuration list for PBXNativeTarget "Dodo" */;
 			buildPhases = (
+				2647111C61556B48FCA118A4 /* [CP] Check Pods Manifest.lock */,
 				8AEB648826ED59C5005C03DF /* Sources */,
 				8AEB648926ED59C5005C03DF /* Frameworks */,
 				8AEB648A26ED59C5005C03DF /* Resources */,
+				68B011A04BC48F796131DC12 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,16 +191,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2647111C61556B48FCA118A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dodo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68B011A04BC48F796131DC12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dodo/Pods-Dodo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dodo/Pods-Dodo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dodo/Pods-Dodo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8AEB648826ED59C5005C03DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8AEB649426ED59C5005C03DF /* TodoListTableViewController.swift in Sources */,
-				8ABBD91626F9F693008881FB /* DataModel.xcdatamodeld in Sources */,
 				8A33BB34270077EC00F3150A /* CategoryTableViewController.swift in Sources */,
 				8AEB649026ED59C5005C03DF /* AppDelegate.swift in Sources */,
+				8AA1AB0227011FA500DA9137 /* Item.swift in Sources */,
 				8AEB649226ED59C5005C03DF /* SceneDelegate.swift in Sources */,
+				8AA1AB0027011F9500DA9137 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +387,7 @@
 		};
 		8AEB64A126ED59C7005C03DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7804CBBBEF7D52CB3A73489 /* Pods-Dodo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -334,6 +407,7 @@
 		};
 		8AEB64A226ED59C7005C03DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C5DF3F48C987A752497FAE5 /* Pods-Dodo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -373,19 +447,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8ABBD91426F9F693008881FB /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8ABBD91526F9F693008881FB /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 8ABBD91526F9F693008881FB /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8AEB648426ED59C5005C03DF /* Project object */;
 }
