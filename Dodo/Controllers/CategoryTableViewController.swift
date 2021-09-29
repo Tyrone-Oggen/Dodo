@@ -12,7 +12,7 @@ class CategoryTableViewController: UITableViewController {
     //We don't need to worry about the try! is because we already catered for the caution of the first realm being created inside the AppDelegate so we can safely unwrap the try!
     let realm = try! Realm()
     
-    var categoryArray = [Category]()
+    var categoryArray: Results<Category>!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -64,8 +64,6 @@ class CategoryTableViewController: UITableViewController {
             
             newCategory.name = textfield.text!
             
-            self.categoryArray.append(newCategory)
-            
             self.save(category: newCategory)
         }
         
@@ -92,13 +90,8 @@ class CategoryTableViewController: UITableViewController {
     }
     
     func loadCategories() {
-//        let request: NSFetchRequest<Category> = Category.fetchRequest()
-//        do {
-//            categoryArray = try context.fetch(request)
-//        } catch {
-//            print("Error loading data to from context: \(error)")
-//        }
-//
-//        tableView.reloadData()
+        categoryArray = realm.objects(Category.self)
+
+        tableView.reloadData()
     }
 }
