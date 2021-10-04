@@ -12,10 +12,9 @@ class CategoryTableViewController: UITableViewController {
     //We don't need to worry about the try! is because we already catered for the caution of the first realm being created inside the AppDelegate so we can safely unwrap the try!
     let realm = try! Realm()
     
-    var categoryArray: Results<Category>!
+    var categories: Results<Category>?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,13 +23,13 @@ class CategoryTableViewController: UITableViewController {
     
     //MARK: - TableView Datasource methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
+        return categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        cell.textLabel?.text = categoryArray[indexPath.row].name
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "No categories added"
         
         return cell
     }
@@ -50,7 +49,7 @@ class CategoryTableViewController: UITableViewController {
          */
         if let indexPath = tableView.indexPathForSelectedRow {
             //We set the property selectedCategory on the destinationVC (which is the TodoListVC) as the Category object row that gets selected
-            destinationVC.selectedCategory = categoryArray[indexPath.row]
+            destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }
     
@@ -90,7 +89,7 @@ class CategoryTableViewController: UITableViewController {
     }
     
     func loadCategories() {
-        categoryArray = realm.objects(Category.self)
+        categories = realm.objects(Category.self)
 
         tableView.reloadData()
     }
