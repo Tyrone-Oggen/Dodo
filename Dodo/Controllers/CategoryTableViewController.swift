@@ -9,7 +9,9 @@ import UIKit
 import RealmSwift
 
 class CategoryTableViewController: UITableViewController {
-    //We don't need to worry about the try! is because we already catered for the caution of the first realm being created inside the AppDelegate so we can safely unwrap the try!
+    /*
+     We don't need to worry about the try! is because we already catered for the caution of the first realm being created inside the AppDelegate so we can safely unwrap the try!
+     */
     let realm = try! Realm()
     
     var categories: Results<Category>?
@@ -25,7 +27,7 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories?.count ?? 1
     }
-    
+      
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
@@ -48,7 +50,9 @@ class CategoryTableViewController: UITableViewController {
             Swift will know the indexPath because this method is called inside the didSelectRowAt metho which will have access to this method
          */
         if let indexPath = tableView.indexPathForSelectedRow {
-            //We set the property selectedCategory on the destinationVC (which is the TodoListVC) as the Category object row that gets selected
+            /*
+             We set the property selectedCategory on the destinationVC (which is the TodoListVC) as the Category object row that gets selected
+             */
             destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }

@@ -16,7 +16,9 @@ class TodoListTableViewController: UITableViewController {
     
     //Set to an optional Category because it will be nil when the class is loaded
     var selectedCategory : Category? {
-        //Everything bewtween the follwing curly braces will be run, only when selectedCategory has a value which is why we run loadItems because it is dependant on the selectedCategory property
+        /*
+         Everything bewtween the follwing curly braces will be run, only when selectedCategory has a value which is why we run loadItems because it is dependant on the selectedCategory property
+         */
         didSet {
             loadItems() 
         }
@@ -70,6 +72,7 @@ class TodoListTableViewController: UITableViewController {
                     try self.realm.write {
                         let newItem = Item()
                         newItem.title = textField.text!
+                        //Instead of creating a new item and setting it's parent category, we go to the the parent item which is the category and append it to it's linked items
                         currentCategory.items.append(newItem)
                     }
                 } catch {
@@ -82,7 +85,7 @@ class TodoListTableViewController: UITableViewController {
             
             
             tableView.reloadData()
-//            //We set the relationShip category we created inside the DataModel so that it will get all relevant data accordingly
+//            We set the relationShip category we created inside the DataModel so that it will get all relevant data accordingly
 //            newItem.parentCategory = self.selectedCategory
 //
 //            self.itemArray.append(newItem)
