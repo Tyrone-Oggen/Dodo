@@ -51,10 +51,13 @@ class TodoListTableViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write {
+//                    Delete item in realm
+//                    realm.delete(item)
+                    
                     item.done = !item.done
                 }
             } catch {
-                print("Error updating item done status: \(error)")
+                print("Error updating item done status: \(error )")
             }
         }
         
