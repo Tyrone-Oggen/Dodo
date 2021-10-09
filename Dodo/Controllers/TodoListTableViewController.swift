@@ -20,7 +20,7 @@ class TodoListTableViewController: UITableViewController {
          Everything bewtween the follwing curly braces will be run, only when selectedCategory has a value which is why we run loadItems because it is dependant on the selectedCategory property
          */
         didSet {
-            loadItems() 
+            loadItems()
         }
     }
     
@@ -48,11 +48,17 @@ class TodoListTableViewController: UITableViewController {
     
     //MARK: - Tableview Delegate methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let item = todoItems[indexPath.row]
-//
-//        item.done.toggle()
-//
-//        self.saveItems()
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print("Error updating item done status: \(error)")
+            }
+        }
+        
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -72,7 +78,7 @@ class TodoListTableViewController: UITableViewController {
                     try self.realm.write {
                         let newItem = Item()
                         newItem.title = textField.text!
-                        //Instead of creating a new item and setting it's parent category, we go to the the parent item which is the category and append it to it's linked items
+                        // Instead of creating a new item and setting it's parent category, we go to the the parent item which is the category and append it to it's linked items
                         currentCategory.items.append(newItem)
                     }
                 } catch {
@@ -82,14 +88,7 @@ class TodoListTableViewController: UITableViewController {
                 tableView.reloadData()
             }
             
-            
-            
             tableView.reloadData()
-//            We set the relationShip category we created inside the DataModel so that it will get all relevant data accordingly
-//            newItem.parentCategory = self.selectedCategory
-//
-//            self.itemArray.append(newItem)
-            
             
         }
         
@@ -105,7 +104,7 @@ class TodoListTableViewController: UITableViewController {
     //MARK: - Model Manipulation Methods
     func loadItems() {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
-
+        
         tableView.reloadData()
     }
     
