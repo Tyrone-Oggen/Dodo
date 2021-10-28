@@ -16,9 +16,7 @@ class TodoListTableViewController: UITableViewController {
     
     //Set to an optional Category because it will be nil when the class is loaded
     var selectedCategory : Category? {
-        /*
-         Everything bewtween the follwing curly braces will be run, only when selectedCategory has a value which is why we run loadItems because it is dependant on the selectedCategory property
-         */
+        //Everything bewtween the follwing curly braces will be run, only when selectedCategory has a value which is why we run loadItems because it is dependant on the selectedCategory property
         didSet {
             loadItems()
         }
@@ -116,13 +114,6 @@ extension TodoListTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         tableView.reloadData()
-//        let request : NSFetchRequest<Item> = Item.fetchRequest()
-//
-//        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-//
-//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//
-//        loadItems(with: request, predicate: predicate)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

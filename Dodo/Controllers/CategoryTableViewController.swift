@@ -9,9 +9,7 @@ import UIKit
 import RealmSwift
 
 class CategoryTableViewController: UITableViewController {
-    /*
-     We don't need to worry about the try! is because we already catered for the caution of the first realm being created inside the AppDelegate so we can safely unwrap the try!
-     */
+    //We don't need to worry about the try! is because we already catered for the caution of the first realm being created inside the AppDelegate so we can safely unwrap the try!
     let realm = try! Realm()
     
     var categories: Results<Category>?
@@ -45,14 +43,9 @@ class CategoryTableViewController: UITableViewController {
         //Downcasted since we know where the segue is navigating to
         let destinationVC = segue.destination as! TodoListTableViewController
         
-        /*
-            This returns an optional indexPath so we wrap it in an if let, even though it's going to be triggered once a row is actually selected
-            Swift will know the indexPath because this method is called inside the didSelectRowAt metho which will have access to this method
-         */
+        //This returns an optional indexPath so we wrap it in an if let, even though it's going to be triggered once a row is actually selected Swift will know the indexPath because this method is called inside the didSelectRowAt metho which will have access to this method
         if let indexPath = tableView.indexPathForSelectedRow {
-            /*
-             We set the property selectedCategory on the destinationVC (which is the TodoListVC) as the Category object row that gets selected
-             */
+            //We set the property selectedCategory on the destinationVC (which is the TodoListVC) as the Category object row that gets selected
             destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }
